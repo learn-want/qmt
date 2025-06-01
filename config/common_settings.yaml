@@ -1,7 +1,3 @@
-# 通用配置文件
-# 注意：此文件仅包含通用配置，策略特定配置请使用对应的配置文件
-# 例如：ma_cross_settings.yaml, first_board_settings.yaml
-
 # 系统配置
 log_dir: "logs"          # 日志目录
 data_dir: "data"         # 数据目录
@@ -29,16 +25,3 @@ backtest:
   initial_capital: 1000000   # 初始资金
   commission_rate: 0.0003    # 手续费率
   slippage: 0.0001          # 滑点率
-
-# 数据配置 - 通用示例
-# 注意：实际使用时请在策略特定配置文件中定义
-data:
-  universe: []              # 交易标的池（空）
-  history_length: 100       # 加载的历史数据长度（交易日）
-  indicators: []            # 需要计算的技术指标（空）
-
-# 策略参数
-# 注意：此处不应包含任何策略特定参数
-# 请在对应的策略配置文件中定义，如：
-# - config/ma_cross_settings.yaml
-# - config/first_board_settings.yaml

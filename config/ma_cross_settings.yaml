@@ -1,7 +1,3 @@
-# 通用配置文件
-# 注意：此文件仅包含通用配置，策略特定配置请使用对应的配置文件
-# 例如：ma_cross_settings.yaml, first_board_settings.yaml
-
 # 系统配置
 log_dir: "logs"          # 日志目录
 data_dir: "data"         # 数据目录
@@ -30,15 +26,23 @@ backtest:
   commission_rate: 0.0003    # 手续费率
   slippage: 0.0001          # 滑点率
 
-# 数据配置 - 通用示例
-# 注意：实际使用时请在策略特定配置文件中定义
+# 数据配置
 data:
-  universe: []              # 交易标的池（空）
-  history_length: 100       # 加载的历史数据长度（交易日）
-  indicators: []            # 需要计算的技术指标（空）
+  universe: [              # 交易标的池
+    "000001.SZ",          # 平安银行
+    "600000.SH"           # 浦发银行
+  ]
+  history_length: 100      # 加载的历史数据长度（交易日）
+  indicators: [            # 需要计算的技术指标
+    "MA",                  # 移动平均
+    "RSI",                 # 相对强弱指数
+    "MACD"                 # 平滑异同移动平均
+  ]
 
-# 策略参数
-# 注意：此处不应包含任何策略特定参数
-# 请在对应的策略配置文件中定义，如：
-# - config/ma_cross_settings.yaml
-# - config/first_board_settings.yaml
+# 均线交叉策略参数
+strategy_params:
+  ma_short: 5              # 短期均线周期
+  ma_long: 20              # 长期均线周期
+  rsi_period: 14           # RSI计算周期
+  rsi_buy: 30              # RSI买入阈值
+  rsi_sell: 70             # RSI卖出阈值
