@@ -1,0 +1,48 @@
+# 系统配置
+log_dir: "logs"          # 日志目录
+data_dir: "data"         # 数据目录
+log_level: "INFO"        # 日志级别
+
+# 账户配置
+account:
+  account_id: ""         # 资金账号
+  account_type: "STOCK"  # 账户类型：STOCK-股票，FUTURE-期货
+  token: ""              # API令牌（如需要）
+
+# 交易配置
+trading:
+  order_timeout: 60      # 订单超时时间（秒）
+  max_positions: 5       # 最大持仓数
+  risk_limit: 0.1        # 风险限额（占总资金比例）
+  trading_hours:         # 交易时段
+    - ["09:30", "11:30"]
+    - ["13:00", "15:00"]
+
+# 回测配置
+backtest:
+  start_date: "2023-01-01"  # 回测起始日期
+  end_date: "2023-12-31"    # 回测结束日期
+  initial_capital: 1000000   # 初始资金
+  commission_rate: 0.0003    # 手续费率
+  slippage: 0.0001          # 滑点率
+
+# 数据配置
+data:
+  universe: [              # 交易标的池
+    "000001.SZ",          # 平安银行
+    "600000.SH"           # 浦发银行
+  ]
+  history_length: 100      # 加载的历史数据长度（交易日）
+  indicators: [            # 需要计算的技术指标
+    "MA",                  # 移动平均
+    "RSI",                 # 相对强弱指数
+    "MACD"                 # 平滑异同移动平均
+  ]
+
+# 策略参数（示例）
+strategy_params:
+  ma_short: 5              # 短期均线周期
+  ma_long: 20              # 长期均线周期
+  rsi_period: 14           # RSI计算周期
+  rsi_buy: 30              # RSI买入阈值
+  rsi_sell: 70             # RSI卖出阈值
