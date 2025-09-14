@@ -50,3 +50,4 @@ Thumbs.db
 *.model
 temp/
 .trae/
+.conda/
