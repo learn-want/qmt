@@ -5,7 +5,7 @@ log_level: "INFO"        # 日志级别
 
 # 账户配置
 account:
-  account_id: ""         # 资金账号
+  account_id: "40126980"         # 资金账号
   account_type: "STOCK"  # 账户类型：STOCK-股票，FUTURE-期货
   token: ""              # API令牌（如需要）
 

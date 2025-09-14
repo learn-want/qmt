@@ -16,7 +16,7 @@ from loguru import logger
 from strategies.base_strategy import BaseStrategy
 from utils.logger import strategy_log
 
-class MACrossStrategy(BaseStrategy):
+class ma_cross_strategy(BaseStrategy):
     """双均线交叉策略"""
 
     def initialize(self) -> None:

@@ -149,8 +149,8 @@ class DataFetcher:
             # 简单测试API是否可用
             test_code = self.universe[0] if self.universe else "000001.SZ"
             test_data = xtdata.get_market_data_ex(
-                fields=["close"],
-                stock_code=[test_code],
+                field_list=["close"],
+                stock_list=[test_code],
                 period='1d',
                 count=1
             )
@@ -175,8 +175,8 @@ class DataFetcher:
         try:
             logger.debug(f"获取历史数据 - 代码: {code}, 周期: {period}, 条数: {count}")
             data = xtdata.get_market_data_ex(
-                fields=[],
-                stock_code=[code],
+                field_list=[],
+                stock_list=[code],
                 period=period,
                 count=count
             )
@@ -202,8 +202,8 @@ class DataFetcher:
         try:
             logger.debug(f"获取实时行情 - 代码: {code}")
             data = xtdata.get_market_data_ex(
-                fields=[],
-                stock_code=[code],
+                field_list=[],
+                stock_list=[code],
                 period='1d',
                 count=1
             )
@@ -230,15 +230,20 @@ class DataFetcher:
         """
         try:
             # 转换日期格式
-            start = datetime.strptime(start_date, "%Y-%m-%d")
-            end = datetime.strptime(end_date, "%Y-%m-%d")
+            # start = datetime.strptime(start_date, "%Y%m%d")
+            # end = datetime.strptime(end_date, "%Y%m%d")
+            start=start_date
+            end=end_date
+            # start='20250101'
+            # end='20250910'
+            print(start,end)
             
             # 获取交易日历
             dates = xtdata.get_trading_dates("SH", start, end)
             
             # 转换为字符串格式
-            date_strs = [date.strftime("%Y-%m-%d") for date in dates]
-            
+            # date_strs = [date.strftime("%Y%m%d") for date in dates]
+            date_strs=list(set(dates))
             if not date_strs:
                 logger.warning(f"获取的交易日历为空: {start_date} 至 {end_date}")
             
@@ -264,8 +269,8 @@ class DataFetcher:
         try:
             logger.debug(f"批量获取历史数据 - 代码数量: {len(codes)}, 周期: {period}, 条数: {count}")
             data = xtdata.get_market_data_ex(
-                fields=[],
-                stock_code=codes,
+                field_list=[],
+                stock_list=codes,
                 period=period,
                 count=count
             )

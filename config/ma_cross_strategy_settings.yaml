@@ -5,7 +5,7 @@ log_level: "INFO"        # 日志级别
 
 # 账户配置
 account:
-  account_id: ""         # 资金账号
+  account_id: "40126980"         # 资金账号
   account_type: "STOCK"  # 账户类型：STOCK-股票，FUTURE-期货
   token: ""              # API令牌（如需要）
 
@@ -20,8 +20,8 @@ trading:
 
 # 回测配置
 backtest:
-  start_date: "2023-01-01"  # 回测起始日期
-  end_date: "2023-12-31"    # 回测结束日期
+  start_date: "20230101"  # 回测起始日期
+  end_date: "20231231"    # 回测结束日期
   initial_capital: 1000000   # 初始资金
   commission_rate: 0.0003    # 手续费率
   slippage: 0.0001          # 滑点率
